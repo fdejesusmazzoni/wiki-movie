@@ -6,6 +6,8 @@ import { Layout } from './components/layout/Layout';
 import { ThemeProvider } from '@material-ui/styles';
 import { store } from './store/create';
 import { Provider } from 'react-redux';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const App = () => {
   return (
@@ -16,6 +18,7 @@ const App = () => {
           <Layout />
         </ThemeProvider>
       </Router>
+      <ToastContainer hideProgressBar />
     </Provider>
   );
 };
