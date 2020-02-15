@@ -1,5 +1,10 @@
-import React, { useEffect } from 'react';
-import { Genre, MoviesPaginator } from '../../../model';
+import React, { useEffect, useState } from 'react';
+import { Genre, MoviesPaginator, Movie } from '../../../model';
+import { MovieCard } from './components/movie-card/MovieCard';
+import { Paper } from '@material-ui/core';
+import { useStyles } from './MoviesListStyles';
+import Pagination from 'material-ui-flat-pagination';
+import { MOVIES_BY_PAGE } from './constants';
 
 interface Props {
   genres: Genre[];
@@ -10,6 +15,8 @@ interface Props {
 
 export const MoviesList = (props: Props) => {
   
+  const [offset, setOffset] = useState<number>(0);
+  const classes = useStyles();
   const { genres, movies, loadGenres, loadPopularMovies } = props;
 
   useEffect(
@@ -24,11 +31,29 @@ export const MoviesList = (props: Props) => {
     [genres, loadGenres, loadPopularMovies]
   );
 
+  const handleChangePage = (_event: React.MouseEvent<HTMLElement>, newOffset: number, page: number) => {
+    setOffset(newOffset);
+  };
+
   return (
     <>
-      { 
-        movies.results.map(g => <h3>{g.title}</h3>) 
-      }
+      <Paper elevation={2} className={classes.root}>
+        { 
+          movies.results.map((m: Movie, index: number ) => 
+            <MovieCard movie={m} key={index} className={classes.movieCard} />
+          ) 
+        }
+      </Paper>
+      <div className={classes.paginationDiv}>
+        <Pagination
+            className={classes.pagination}
+            limit={MOVIES_BY_PAGE}
+            offset={offset}
+            total={movies.total_results}
+            onClick={handleChangePage}
+            currentPageColor={'default'}
+          />
+      </div>
     </>
   );
 };
