@@ -1,29 +1,33 @@
 import React, { useEffect } from 'react';
-import { Genre } from '../../../model';
+import { Genre, MoviesPaginator } from '../../../model';
 
 interface Props {
   genres: Genre[];
+  movies: MoviesPaginator;
   loadGenres(): void;
+  loadPopularMovies(): void;
 }
 
 export const MoviesList = (props: Props) => {
   
-  const { genres, loadGenres } = props;
+  const { genres, movies, loadGenres, loadPopularMovies } = props;
 
   useEffect(
     () => {
-
       if (genres.length === 0)  {
         loadGenres();    
-      }           
+      } else {
+        loadPopularMovies();
+      }         
+
     },
-    [genres, loadGenres]
+    [genres, loadGenres, loadPopularMovies]
   );
 
   return (
     <>
       { 
-        genres.map(g => <h1>{g.name}</h1>) 
+        movies.results.map(g => <h3>{g.title}</h3>) 
       }
     </>
   );

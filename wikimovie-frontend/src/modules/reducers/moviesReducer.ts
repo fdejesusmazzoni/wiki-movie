@@ -1,9 +1,25 @@
 import { BaseAction } from '../../common/actions/baseAction';
-import { createDefaultMovies, Movie } from '../../model';
+import { createDefaultMoviesPaginator, MoviesPaginator } from '../../model';
+import { commonActionTypes } from '../constants';
 
 export const moviesReducer = (
-  state = createDefaultMovies(),
+  state = createDefaultMoviesPaginator(),
   action: BaseAction
-): Movie[] => {
-  return [];
+): MoviesPaginator => {
+  switch (action.type) {
+    case commonActionTypes.LOAD_POPULAR_MOVIES_SUCCESS:
+      return handleMovieSuccess(state, action.payload);
+    case commonActionTypes.LOAD_POPULAR_MOVIES_FAILURE:
+      return state;
+    case commonActionTypes.SEARCH_MOVIES_SUCCESS:
+      return handleMovieSuccess(state, action.payload);
+    case commonActionTypes.SEARCH_MOVIES_FAILURE:
+      return state;
+    default:
+      return state;
+  }
 };
+
+const handleMovieSuccess = (_state: MoviesPaginator, movies: MoviesPaginator): MoviesPaginator => (
+  movies
+);

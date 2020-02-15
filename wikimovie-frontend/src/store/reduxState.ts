@@ -1,13 +1,13 @@
 import { 
-  Genre, Movie, createDefaultGenres, createDefaultMovies,
+  Genre, MoviesPaginator, createDefaultGenres, createDefaultMoviesPaginator,
  } from '../model';
 
 export interface ReduxState {
   genres: Genre[];
-  movies: Movie[];
+  movies: MoviesPaginator;
 }
 
 export const createDefaultReduxState = (): ReduxState => ({
   genres: createDefaultGenres(),
-  movies: createDefaultMovies(),
+  movies: createDefaultMoviesPaginator(),
 });
