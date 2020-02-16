@@ -7,6 +7,7 @@ export const apiRoutes = {
   movies: {
     get: `${apiPrefix}/movie/popular?api_key={apikey}&page={page}`,
     search: `${apiPrefix}/search/movie?api_key={apikey}&query={searchTitle}&page={page}&include_adult=false`,
+    details: `${apiPrefix}/movie/{movieId}?api_key={apikey}`,
   },
 };
 
@@ -19,6 +20,7 @@ export const apiGenreErrorMessages = {
 
 export const apiMovieErrorMessages = {
   errorLoading: 'There was an error loading the movies list. Please try again later',
+  errorDetailLoading: 'There was an error loading the movie details. Please try again later',
 };
 
 export const apikey = 'a5ab780b7af501a62581e2e9d25c8815';

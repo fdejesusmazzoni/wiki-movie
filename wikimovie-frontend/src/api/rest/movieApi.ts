@@ -1,7 +1,7 @@
 import { requestConfig, getApiURL } from '../helpers';
 import { apiRoutes, apiMovieErrorMessages, apikey } from './constants';
-import { mapMovieToModel } from './mappers';
-import { MoviesPaginator, FilterMovie } from '../../model';
+import { mapMovieToModel, mapMovieDetialsToModel } from './mappers';
+import { MoviesPaginator, FilterMovie, MovieDetails } from '../../model';
 
 const getPopularMovies = (page: number): Promise<MoviesPaginator> => {
   const request: RequestInit = {
@@ -44,7 +44,28 @@ const getSearchMovies = (filter: FilterMovie): Promise<MoviesPaginator> => {
     .then((movies: MoviesPaginator) => mapMovieToModel(movies));
 };
 
+const getMovieDetails = (movieId: number): Promise<MovieDetails> => {
+  const request: RequestInit = {
+    ...requestConfig,
+  };
+
+  const apiUrl = getApiURL(apiRoutes.movies.details)
+    .replace('{apikey}', apikey)
+    .replace('{movieId}', movieId.toString());
+
+  return fetch(apiUrl, request)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+
+      throw new Error(apiMovieErrorMessages.errorDetailLoading);
+    })
+    .then((movieDetails: MovieDetails) => mapMovieDetialsToModel(movieDetails));
+};
+
 export const movieAPI = {
   getPopularMovies,
   getSearchMovies,
+  getMovieDetails,
 };

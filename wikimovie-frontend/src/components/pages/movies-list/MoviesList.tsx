@@ -7,6 +7,8 @@ import Pagination from 'material-ui-flat-pagination';
 import { MOVIES_BY_PAGE } from './constants';
 import { SearchBox } from '../../common/search-box/SearchBox';
 import { useTranslation } from 'react-i18next';
+import { useHistory } from 'react-router-dom';
+import { routePaths } from '../../../common/routes';
 
 interface Props {
   genres: Genre[];
@@ -20,8 +22,9 @@ export const MoviesList = (props: Props) => {
   const { t } = useTranslation();
   const [offset, setOffset] = useState<number>(0);
   const [searchboxText, setSearchboxText] = useState<string>('');
-
+  const history = useHistory();
   const classes = useStyles();
+
   const { genres, movies, loadGenres, loadPopularMovies, searchMovies } = props;
 
   useEffect(
@@ -59,6 +62,10 @@ export const MoviesList = (props: Props) => {
     }
   };
 
+  const navigateToDetails = (movieId: number) => {
+    history.push(`${routePaths.view}/${movieId}`);
+  };
+
   return (
     <>
       <SearchBox
@@ -74,7 +81,8 @@ export const MoviesList = (props: Props) => {
               genres={genres}
               movie={m} 
               key={index} 
-              className={classes.movieCard} />
+              className={classes.movieCard} 
+              onClicCard={navigateToDetails}/>
           ) 
         }
       </Paper>

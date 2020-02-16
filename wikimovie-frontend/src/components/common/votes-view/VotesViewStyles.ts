@@ -20,12 +20,4 @@ export const useStyles = makeStyles(theme => ({
     color: 'red',
     fontSize: 'x-large'
   },
-  chips: {
-    display: 'flex',
-    justifyContent: 'center',
-    flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(0.5),
-    },
-  }
 }));

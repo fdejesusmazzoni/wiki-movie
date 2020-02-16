@@ -4,6 +4,7 @@ import { commonActionTypes } from '../constants';
 import { loadGenresSaga } from './loadGenresSaga';
 import { loadPopularMoviesSaga } from './loadPopularMoviesSaga';
 import { searchMoviesSaga } from './searchMoviesSaga';
+import { loadMovieDetailsSaga } from './loadMovieDetailsSaga';
 
 function* watchAll() {
   yield takeEvery('*', function logger(action: Object) {
@@ -11,6 +12,10 @@ function* watchAll() {
     console.log(action);
     return null;
   });
+}
+
+function* watchLoadMovieDetailsSaga() {
+  yield takeLatest(commonActionTypes.LOAD_MOVIE_DETAILS_REQUEST, loadMovieDetailsSaga);
 }
 
 function* watchLoadGenresSaga() {
@@ -30,6 +35,7 @@ function getForks() {
     fork(watchLoadGenresSaga),
     fork(watchLoadPopularMoviesSaga),
     fork(watchSearchMoviesSaga),
+    fork(watchLoadMovieDetailsSaga),
   ];
   
   if (isDevelopmentMode()) {
