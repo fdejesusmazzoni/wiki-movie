@@ -70,7 +70,11 @@ export const MoviesList = (props: Props) => {
       <Paper elevation={2} className={classes.root}>
         { 
           movies.results.map((m: Movie, index: number ) => 
-            <MovieCard movie={m} key={index} className={classes.movieCard} />
+            <MovieCard 
+              genres={genres}
+              movie={m} 
+              key={index} 
+              className={classes.movieCard} />
           ) 
         }
       </Paper>

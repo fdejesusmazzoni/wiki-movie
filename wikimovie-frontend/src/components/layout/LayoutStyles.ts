@@ -6,7 +6,8 @@ export const useStyles = makeStyles(theme => ({
       overflow: 'hidden', 
     },
     '.MuiCardContent-root': {
-      height: '100%'
+      height: '100%',
+      paddingTop: '0px'
     },
     '.MuiCardActionArea-root': {
       height: '100%'

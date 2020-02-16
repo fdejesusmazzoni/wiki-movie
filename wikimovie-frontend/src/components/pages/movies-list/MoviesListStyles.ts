@@ -12,7 +12,7 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     width: 345,
     margin: 10,
-    maxHeight: 380,
+    maxHeight: 400,
   },
   paginationDiv: {
     width: '100%',

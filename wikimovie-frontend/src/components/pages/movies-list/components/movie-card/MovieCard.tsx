@@ -1,23 +1,26 @@
 import React from 'react';
 import { Movie } from '../../../../../api/model';
 import { CardActionArea, CardMedia, Card, CardContent, Typography, Grid } from '@material-ui/core';
-import { BASE_IMAGE_URL, IMAGE_SMALL_SIZE, MAX_LENGTH_OVERVIEW } from './constants';
+import { BASE_IMAGE_URL, IMAGE_SMALL_SIZE, MAX_LENGTH_OVERVIEW, MAX_LENGTH_TITLE } from './constants';
 import { limitLength } from '../../../../../common/util/stringUtils';
 import Rating from '@material-ui/lab/Rating';
 import { useStyles } from './MovieCardStyles';
 import { useTranslation } from 'react-i18next';
 import noimage from '../../../../../content/no-image.png';
+import { Genre } from '../../../../../model';
+import { GenresView } from '../genres-view/GenresView';
 
 interface Props {
   movie: Movie;
   className?: string;
+  genres: Genre[];
 }
 
 export const MovieCard = (props: Props) => {
   const classes = useStyles();
   const { t } = useTranslation();
 
-  const { movie, className } = props;
+  const { movie, className, genres } = props;
 
   const getUrlImage = (movieData: Movie) => {
 
@@ -49,8 +52,9 @@ export const MovieCard = (props: Props) => {
           title={ movie.title }
         />
         <CardContent>
+          <GenresView movie={movie} genres={genres} />
           <Typography gutterBottom variant="h5" component="h2">
-            { movie.title }
+            {  limitLength(movie.title, MAX_LENGTH_TITLE) }
           </Typography>
           <Grid container spacing={2}>
             <Grid item>
