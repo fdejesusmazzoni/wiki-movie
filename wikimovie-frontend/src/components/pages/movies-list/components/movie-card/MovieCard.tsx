@@ -6,6 +6,7 @@ import { limitLength } from '../../../../../common/util/stringUtils';
 import Rating from '@material-ui/lab/Rating';
 import { useStyles } from './MovieCardStyles';
 import { useTranslation } from 'react-i18next';
+import noimage from '../../../../../content/no-image.png';
 
 interface Props {
   movie: Movie;
@@ -19,15 +20,14 @@ export const MovieCard = (props: Props) => {
   const { movie, className } = props;
 
   const getUrlImage = (movieData: Movie) => {
-    var imageUrl = '';
 
     if (movieData.backdrop_path) {
-      imageUrl = movieData.backdrop_path;
+      return `${BASE_IMAGE_URL}${IMAGE_SMALL_SIZE}/${movieData.backdrop_path}`;
+    } else if (movieData.poster_path) {
+      return `${BASE_IMAGE_URL}${IMAGE_SMALL_SIZE}/${movieData.poster_path}`;
     } else {
-      imageUrl = movieData.poster_path;
+      return noimage;
     }
-
-    return `${BASE_IMAGE_URL}${IMAGE_SMALL_SIZE}/${imageUrl}`;
   };
 
   const getColorVote = (movieData: Movie) => {
