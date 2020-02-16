@@ -1,10 +1,10 @@
 import { BaseAction } from '../../common/actions/baseAction';
 import { commonActionTypes } from '../constants';
-import { MoviesPaginator } from '../../model';
+import { MoviesPaginator, FilterMovie } from '../../model';
 
-export const searchMoviesAction = (): BaseAction => ({
+export const searchMoviesAction = (page: number, searchTitle: string): BaseAction<FilterMovie> => ({
   type: commonActionTypes.SEARCH_MOVIES_REQUEST,
-  payload: null,
+  payload: {page, searchTitle},
 });
 
 export const searchMoviesErrorAction = (error: string): BaseAction => ({

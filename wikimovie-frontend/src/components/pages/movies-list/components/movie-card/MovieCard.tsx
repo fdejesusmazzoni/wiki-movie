@@ -19,7 +19,15 @@ export const MovieCard = (props: Props) => {
   const { movie, className } = props;
 
   const getUrlImage = (movieData: Movie) => {
-    return `${BASE_IMAGE_URL}${IMAGE_SMALL_SIZE}/${movieData.backdrop_path}`;
+    var imageUrl = '';
+
+    if (movieData.backdrop_path) {
+      imageUrl = movieData.backdrop_path;
+    } else {
+      imageUrl = movieData.poster_path;
+    }
+
+    return `${BASE_IMAGE_URL}${IMAGE_SMALL_SIZE}/${imageUrl}`;
   };
 
   const getColorVote = (movieData: Movie) => {

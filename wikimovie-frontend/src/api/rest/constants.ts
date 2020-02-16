@@ -5,7 +5,8 @@ export const apiRoutes = {
     get: `${apiPrefix}/genre/movie/list?api_key={apikey}`,
   },
   movies: {
-    get: `${apiPrefix}/movie/popular?api_key={apikey}`,
+    get: `${apiPrefix}/movie/popular?api_key={apikey}&page={page}`,
+    search: `${apiPrefix}/search/movie?api_key={apikey}&query={searchTitle}&page={page}&include_adult=false`,
   },
 };
 

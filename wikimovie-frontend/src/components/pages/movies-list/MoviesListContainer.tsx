@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { ReduxState } from '../../../store/reduxState';
 import { MoviesList } from './MoviesList';
 import { BaseAction } from '../../../common/actions/baseAction';
-import { loadGenresAction, loadPopularMoviesAction } from '../../../modules/actions';
+import { loadGenresAction, loadPopularMoviesAction, searchMoviesAction } from '../../../modules/actions';
 import { Dispatch } from 'redux';
 import { selectGenres, selectMovies } from '../../../modules/selectors';
 
@@ -15,8 +15,11 @@ const mapDispatchToProps = (dispatch: Dispatch<BaseAction>) => ({
   loadGenres: () => {
     dispatch(loadGenresAction()); 
   },
-  loadPopularMovies: () => {
-    dispatch(loadPopularMoviesAction()); 
+  loadPopularMovies: (page: number) => {
+    dispatch(loadPopularMoviesAction(page)); 
+  },
+  searchMovies: (page: number, searchTitle: string) => {
+    dispatch(searchMoviesAction(page, searchTitle)); 
   },
 });
 

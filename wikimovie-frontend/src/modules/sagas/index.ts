@@ -3,6 +3,7 @@ import { isDevelopmentMode } from '../../common/util/isDevMode';
 import { commonActionTypes } from '../constants';
 import { loadGenresSaga } from './loadGenresSaga';
 import { loadPopularMoviesSaga } from './loadPopularMoviesSaga';
+import { searchMoviesSaga } from './searchMoviesSaga';
 
 function* watchAll() {
   yield takeEvery('*', function logger(action: Object) {
@@ -20,10 +21,15 @@ function* watchLoadPopularMoviesSaga() {
   yield takeLatest(commonActionTypes.LOAD_POPULAR_MOVIES_REQUEST, loadPopularMoviesSaga);
 }
 
+function* watchSearchMoviesSaga() {
+  yield takeLatest(commonActionTypes.SEARCH_MOVIES_REQUEST, searchMoviesSaga);
+}
+
 function getForks() {
   const forks = [
     fork(watchLoadGenresSaga),
     fork(watchLoadPopularMoviesSaga),
+    fork(watchSearchMoviesSaga),
   ];
   
   if (isDevelopmentMode()) {

@@ -6,12 +6,13 @@ export const useStyles = makeStyles(theme => ({
    display: 'flex',
    overflow: 'auto',
    flexWrap: 'wrap',
-   height: '80vh',
+   height: '75vh',
   },
   movieCard: {
     flexDirection: 'column',
     width: 345,
     margin: 10,
+    maxHeight: 380,
   },
   paginationDiv: {
     width: '100%',

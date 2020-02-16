@@ -2,9 +2,9 @@ import { BaseAction } from '../../common/actions/baseAction';
 import { commonActionTypes } from '../constants';
 import { MoviesPaginator } from '../../model';
 
-export const loadPopularMoviesAction = (): BaseAction => ({
+export const loadPopularMoviesAction = (page: number): BaseAction => ({
   type: commonActionTypes.LOAD_POPULAR_MOVIES_REQUEST,
-  payload: null,
+  payload: page,
 });
 
 export const loadPopularMoviesErrorAction = (error: string): BaseAction => ({

@@ -4,10 +4,11 @@ import { MoviesPaginator } from '../../model';
 import { loadPopularMoviesSuccessAction, loadPopularMoviesErrorAction } from '../actions';
 import i18n from '../../i18n';
 import { toast } from 'react-toastify';
+import { BaseAction } from '../../common/actions/baseAction';
 
-export function* loadPopularMoviesSaga() {
+export function* loadPopularMoviesSaga(action: BaseAction<number>) {
   try {
-    const movies: MoviesPaginator = yield call(movieAPI.getPopularMovies);
+    const movies: MoviesPaginator = yield call(movieAPI.getPopularMovies, action.payload);
     
     yield put(loadPopularMoviesSuccessAction(movies));
   } catch (error) {
