@@ -8,3 +8,8 @@ export interface ReturnLoadGenres {
 }
 
 export const createDefaultGenres = (): Genre[] => ([]);
+
+export const createDefaultGenre = (): Genre => ({
+  id: 0,
+  name: '',
+});

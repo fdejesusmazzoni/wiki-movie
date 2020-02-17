@@ -15,4 +15,21 @@ export interface Movie {
   vote_average: number;
 } 
 
+export const createDefaultMovie = (): Movie => ({
+  poster_path: '',
+  adult: false,
+  overview: '',
+  release_date: new Date(),
+  genre_ids: [],
+  id: 0,
+  original_title: '',
+  original_language: '',
+  title: '',
+  backdrop_path: '',
+  popularity: 0,
+  vote_count: 0,
+  video: false,
+  vote_average: 0,
+});
+
 export const createDefaultMovies = (): Movie[] => ([]);

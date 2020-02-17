@@ -4,3 +4,10 @@ export interface ProductionCompany {
   name: string;
   origin_country: string;
 }
+
+export const createDefaultProductionCompany = (): ProductionCompany => ({
+  id: 0,
+  logo_path: '',
+  name: '',
+  origin_country: '',
+});
