@@ -43,7 +43,7 @@ export const MovieView = (props: Props) => {
   };
 
   return (
-    <>
+    <div className={classes.divPaper}>
       <ButtonWithIcon
         text={ t('Go back') }
         startIcon={ <ArrowBackIcon /> }
@@ -90,6 +90,6 @@ export const MovieView = (props: Props) => {
           </Grid>
         </Grid>
       </Paper>
-    </>
+    </div>
   );
 };

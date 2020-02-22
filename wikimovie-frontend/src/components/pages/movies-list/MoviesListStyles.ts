@@ -11,7 +11,7 @@ export const useStyles = makeStyles(theme => ({
   movieCard: {
     flexDirection: 'column',
     width: 345,
-    margin: 10,
+    margin: '10px auto',
     maxHeight: 400,
   },
   paginationDiv: {
