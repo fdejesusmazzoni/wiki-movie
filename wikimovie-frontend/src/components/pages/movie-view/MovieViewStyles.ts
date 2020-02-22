@@ -1,12 +1,17 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export const useStyles = makeStyles(theme => ({
+  divPaper: {
+    width: '100%',
+  },
   paper: {
+   margin: '0 auto',
    padding: 10,
    display: 'flex',
    overflow: 'auto',
    flexWrap: 'wrap',
    height: '75vh',
+   maxWidth: 1250,
   },
   movieData: {
     padding: 20,

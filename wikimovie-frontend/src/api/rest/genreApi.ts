@@ -1,7 +1,8 @@
 import { requestConfig, getApiURL } from '../helpers';
-import { apiRoutes, apiGenreErrorMessages, apikey } from './constants';
+import { apiRoutes, apiGenreErrorMessages } from './constants';
 import { mapReturnLoadGenresToModel } from './mappers';
 import { Genre, ReturnLoadGenres } from '../model';
+import { apikey } from './apikey';
 
 const getGenres = (): Promise<Genre[]> => {
   const request: RequestInit = {

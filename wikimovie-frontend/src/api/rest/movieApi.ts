@@ -1,7 +1,8 @@
 import { requestConfig, getApiURL } from '../helpers';
-import { apiRoutes, apiMovieErrorMessages, apikey } from './constants';
+import { apiRoutes, apiMovieErrorMessages } from './constants';
 import { mapMovieToModel, mapMovieDetialsToModel } from './mappers';
 import { MoviesPaginator, FilterMovie, MovieDetails } from '../../model';
+import { apikey } from './apikey';
 
 const getPopularMovies = (page: number): Promise<MoviesPaginator> => {
   const request: RequestInit = {
