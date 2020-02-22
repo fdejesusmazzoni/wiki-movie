@@ -22,5 +22,3 @@ export const apiMovieErrorMessages = {
   errorLoading: 'There was an error loading the movies list. Please try again later',
   errorDetailLoading: 'There was an error loading the movie details. Please try again later',
 };
-
-export const apikey = 'a5ab780b7af501a62581e2e9d25c8815';
